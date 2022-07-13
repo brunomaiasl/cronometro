@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu primeiro projeto</title>
+    <link href="./styles.css" rel="stylesheet">
+</head>
+
+<body id="body">
+    <img src="./missao-3.png">
+    <div id="box-number">
+        <span class="number" id="horas">00</span>
+        <span class="number">:</span>
+        <span class="number" id="min">00</span>
+        <span class="number">:</span>
+        <span class="number" id="seg">00</span>
+        <span class="number">:</span>
+        <span class="number" id="mili">00</span>
+    </div>
+    <div id="box-button">
+        <button class="button" id="start">Start</button>
+        <button class="button" id="stop">Stop</button>
+        <button class="button" id="reset">Reset</button>
+    </div>
+</body>
+<script>
+    let btnstart = document.getElementById("start")
+    let btnstop = document.getElementById("stop")
+    let btnreset = document.getElementById("reset")
+    let mili = document.getElementById("mili")
+    let seg = document.getElementById("seg")
+    let min = document.getElementById("min")
+    let horas = document.getElementById("horas")
+    let startTimer
+    let ms = 0
+    let ss = 0
+    let mm = 0
+    let hh = 0
+
+
+    function start() {
+        startTimer = setInterval(function () {
+            ms++
+
+            if (ms == 100) {
+                ss++
+
+                if (ss < 10) {
+                    ss = "0" + ss
+                }
+                ms = 0
+            }
+
+            if (ss == 60) {
+                mm++
+
+                if (mm < 10) {
+                    mm = "0" + mm
+                }
+                ss = 0
+            }
+
+            if (mm == 60) {
+                hh++
+
+                if (hh < 10) {
+                    hh = "0" + hh
+                }
+                mm = 0
+            }
+
+            btnstart.classList.add("ativo")
+            btnstop.classList.remove("ativo")
+            atualizavalor()
+        }, 10);
+    }
+
+    function atualizavalor() {//Para o cronometro
+        mili.innerHTML = ms
+    }
+
+    function stop() {
+        clearInterval(startTimer) //Pausa o set interval
+        btnstop.classList.add("ativo") //Adiciona a classe ativo ao botao stop
+        btnstart.classList.remove("ativo") //Remove a classe ativo ao botao start
+    }
+
+    function reset() { //Reseta o timer
+        clearInterval(startTimer) //Pausa o set interval
+        ms = "00"
+        ss = "00"
+        mm = "00"
+        hh = "00"
+        atualizavalor()
+        btnstart.classList.remove("ativo")
+        btnstop.classList.remove("ativo")
+    }
+
+    function atualizavalor() { //Pega os valores do javascript e coloca no HTML
+        mili.innerHTML = ms //InnerHTML insere um valor em um elemento HTML
+        seg.innerHTML = ss
+        min.innerHTML = mm
+        horas.innerHTML = hh
+    }
+
+    btnstart.addEventListener("click", start) //Vizinho fofoqueiro, sempre que houver um evento determinado, nesse caso o click, chama a funcao
+    btnstop.addEventListener("click", stop)
+    btnreset.addEventListener("click", reset)
+
+</script>
+
+</html>
