@@ -1,4 +1,4 @@
-# Cronometro
+# Cronômetro
 
 Projeto desenvolvido utilizando as seguintes ferramentas:
 
@@ -7,7 +7,7 @@ Projeto desenvolvido utilizando as seguintes ferramentas:
 - <img src="https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E" alt="js-logo"/>
 <br/>
 <h4>Link do projeto:</h4>
-<a href="https://cronometro-brm.netlify.app/">Cronometro</a>
+<a href="https://cronometro-brm.netlify.app/">Cronômetro</a>
 <br/>
 
 
